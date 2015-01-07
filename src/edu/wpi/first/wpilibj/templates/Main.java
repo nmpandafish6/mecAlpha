@@ -76,7 +76,7 @@ public class Main extends IterativeRobot {
         double forward = Math.sin(relativeAngle);
         double strafe = Math.cos(relativeAngle);
         double rotate = joy.getX();
-        double scalar = Math.abs(joy.getMagnitude());
+        double scalar = Math.abs(joy.getMagnitude())/(sqr(forward) + sqr(strafe));
         
         
         double ftLeft = (forward + strafe)*scalar + rotate;
@@ -106,6 +106,10 @@ public class Main extends IterativeRobot {
      */
     public void testPeriodic() {
     
+    }
+    
+    public double sqr(double value){
+        return value*value;
     }
     
     public double[] normalize(double value1, double value2, double value3, double value4){
